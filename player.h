@@ -11,5 +11,7 @@ public:
 	int attack = 1;
 	int defense = 5;
 	int gobchance = 0;
+	int moneychance = 0;
+	int money = 0;
 
 } player;

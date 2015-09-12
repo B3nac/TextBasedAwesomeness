@@ -1,37 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <iostream>
+#include "goblin.h"
+#include "player.h"
 #define SCREEN 25
 #pragma warning(disable : 4996)
 
-/*enemies*/
-
-class goblin
-{
-
-public:
-    int health = 10;
-	static const int attack = 2;
-	static const int defense = 2;
-
-} goblin;
-
-/*player*/
-
-
-class player
-{
-
-public:
-	char name[20];
-	int level = 1;
-	int health = 10;
-	int player_exp = 0;
-    int attack = 1;
-    int defense = 5;
-	int gobchance = 0;
-
-} player;
 /*------------------------------------------------------------------------------------*/
 /*Where people fight.*/
 
@@ -87,7 +62,7 @@ void match()
 			(goblin.health <= 0){
 			printf("You killed the goblin!\n");
 			printf("The amount of experience gained is %i,", exp_gained);
-			player.player_exp + 10;
+			player.player_exp = player.player_exp + 10;
 			goblin.health += 10;
 		}
 
@@ -104,7 +79,7 @@ void clearscreen()
 void temple()
 {
 	printf("You enter a temple!\n"
-		   "which way would you like to go?\n");
+		   "which way would you like to go?\n :");
 }
 void grasslands()
 {
@@ -112,9 +87,10 @@ void grasslands()
 }
 void desert()
 {
-	printf("Sandy.");
+	std::cout << "Sandy.\n";
 	player.gobchance += 1;
-	printf("Gobchance number: ", player.gobchance);
+	player.moneychance += 1;
+	std::cout << "Gobchance number: " << player.gobchance << std::endl;
 }
 void startarea()
 {
@@ -138,14 +114,25 @@ void error_check(FILE *in)
 void move()
 {
 	static int y;
+	char choice;
 
 	if (player.gobchance == 5){
 		printf("You find a goblin! Do you want to attack the goblin?!\n 1 = yes 2 = no: ");
 		player.gobchance = 0;
 	}
 
+	if (player.moneychance == 8){
+		std::cout << "You found some money! Do you want to pick it up?\n y or n: ";
+		std::cin >> choice;
+		if (choice == 'y'){
+			player.money += 5;
+			player.moneychance = 0;
+			std::cout << "Current amount of money: " << player.money;
+		}
+	}
+
 	if (player.gobchance < 5){
-		printf("What area would you like to explore? Desert = 3, Grasslands = 4, Temple = 5");
+		printf("\n What area would you like to explore? Desert = 3, Grasslands = 4, Temple = 5: ");
 	}
 
 	scanf_s("%d", &y);
@@ -160,15 +147,14 @@ void move()
 		match();
 		break;
 	case 2:
-		printf("You chose to run!");
-		printf("Exiting.\n");
+		std::cout << "You chose to run!\n";
+		std::cout << "Exiting.\n";
 		break;
 	case 3:
 		desert();
 		break;
 	case 4:
 		grasslands();
-
 		break;
 	case 5:
 		temple();
@@ -180,7 +166,7 @@ void player_name()
 {
 	player.name[20];
 
-	    printf("Enter your player name : ");
+	    printf("Enter your player name: ");
 	    gets(player.name);
 	    printf("Player name is : %s !", player.name);
 }
