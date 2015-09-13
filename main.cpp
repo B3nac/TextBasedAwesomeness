@@ -5,8 +5,12 @@
 #include "goblin.h"
 #include "player.h"
 #define SCREEN 25
-#pragma warning(disable : 4996)
 
+/*Cross-plat start*/
+#ifdef _WIN32
+#pragma warning(disable : 4996)*/
+#else
+#endif
 /*------------------------------------------------------------------------------------*/
 /*Where people fight.*/
 
@@ -133,9 +137,10 @@ void move()
 
 	if (player.gobchance < 5){
 		printf("\n What area would you like to explore? Desert = 3, Grasslands = 4, Temple = 5: ");
-	}
-
-	scanf_s("%d", &y);
+	
+    }
+	std::cin >> y;
+    
 	error_check(stdin);
 	printf("Invalid integer. Please try again: ");
 
@@ -164,10 +169,8 @@ void move()
 
 void player_name()
 {
-	player.name[20];
-
 	    printf("Enter your player name: ");
-	    gets(player.name);
+	    std::cin >> player.name;
 	    printf("Player name is : %s !", player.name);
 }
 /*------------------------------------------------------------------------------------*/
@@ -180,7 +183,6 @@ void engineLoop()
 }
 
 int main()
-
 {
 
 	player_name();
