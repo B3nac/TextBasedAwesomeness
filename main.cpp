@@ -98,7 +98,7 @@ void desert()
 }
 void startarea()
 {
-	printf("Lots of luscious grass, looks like somewhere new players would start.");
+	std::cout << "Lots of luscious grass, looks like somewhere new players would start.";
 	printf("************************\n*****^^^^^^^^^^"
 		   "trees^^^^^^RRARARERARR\n***************HE"
 		   "HEHHEE\nEEEEEEEEEEEEEEEEEEE\n\n");
