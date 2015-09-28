@@ -82,13 +82,15 @@ void clearscreen()
 /*Areas*/
 void temple()
 {
-	printf("You enter a temple!\n"
-		   "which way would you like to go?\n :");
+	std::cout << "You enter a temple!\n";
+	std::cout << "which way would you like to go?\n :";
 }
+
 void grasslands()
 {
-	printf("Trees, lots of trees.");
+	std::cout << "Trees, lots of trees.";
 }
+
 void desert()
 {
 	std::cout << "Sandy.\n";
@@ -96,12 +98,13 @@ void desert()
 	player.moneychance += 1;
 	std::cout << "Gobchance number: " << player.gobchance << std::endl;
 }
+
 void startarea()
 {
 	std::cout << "Lots of luscious grass, looks like somewhere new players would start.";
-	printf("************************\n*****^^^^^^^^^^"
-		   "trees^^^^^^RRARARERARR\n***************HE"
-		   "HEHHEE\nEEEEEEEEEEEEEEEEEEE\n\n");
+	std::cout << "************************\n*****^^^^^^^^^^"
+		         "trees^^^^^^RRARARERARR\n***************HE"
+		         "HEHHEE\nEEEEEEEEEEEEEEEEEEE\n\n";
 
 }
 /*------------------------------------------------------------------------------------*/
@@ -169,9 +172,9 @@ void move()
 
 void player_name()
 {
-	    printf("Enter your player name: ");
+	    std::cout << "Enter your player name: ";
 	    std::cin >> player.name;
-	    printf("Player name is : %s !", player.name);
+	    std::cout << "Player name is: " << player.name << "\n";
 }
 /*------------------------------------------------------------------------------------*/
 void engineLoop()
@@ -188,8 +191,6 @@ int main()
 	player_name();
     startarea();
 	engineLoop();
-
-    /* blew my mind right here. Heh yeah. */
 
 	getchar();
 	return 0;
