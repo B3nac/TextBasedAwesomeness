@@ -26,10 +26,11 @@ void match()
 	enemydamage = player.defense - goblin.attack;
 	exp_gained = 10;
 
-	printf("You did %i damage!\n", damage);
+	std::cout << "You did " << damage << " damage!" << std::endl;
 	goblin.health = goblin.health - damage;
-	printf("The goblin has %i health left!\n", goblin.health);
-	printf("The bonus is %i!", bonus);
+	std::cout << "The goblin has " << goblin.health << " health left!" << std::endl;
+	std::cout << "The bonus is " << bonus << std::endl;
+	std::cout << std::endl;
 
 	/*Add enemy damage here.*/
 	    if (enemydamage <= player.defense)
@@ -68,6 +69,7 @@ void match()
 			printf("The amount of experience gained is %i,", exp_gained);
 			player.player_exp = player.player_exp + 10;
 			goblin.health += 10;
+			player.gobchance = 0;
 		}
 
 }
@@ -125,7 +127,6 @@ void move()
 
 	if (player.gobchance == 5){
 		printf("You find a goblin! Do you want to attack the goblin?!\n 1 = yes 2 = no: ");
-		player.gobchance = 0;
 	}
 
 	if (player.moneychance == 8){
